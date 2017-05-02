@@ -312,3 +312,7 @@ a:hover {
     	opacity: .8;
   }
 }
+
+.pages {
+	display: none;
+}

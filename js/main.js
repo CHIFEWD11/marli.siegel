@@ -1,42 +1,69 @@
+var modalContents = "",
+    modalContentsContainer = $("#modal").find(".modal-contents");
+
 $("#modal").hide();
 
 $('#detroit').on('click', function(){
-    $('#modal').show();
-    $('#modal').load('../cities/detroit.html');   
+    fireModal(); 
 });
 
 $('#ann-arbor').on('click', function(){
-    $('#modal').show();
+    fireModal();
 });
 
 $('#grand-rapids').on('click', function(){
-    $('#modal').show();
+    modalContents = $("#page-grand_rapids").html();
+    fireModal();
 });
 
 $('#holland').on('click', function(){
-    $('#modal').show();
+    fireModal();
 });
 
 $('#kalamazoo').on('click', function(){
-    $('#modal').show();
+    fireModal();
 });
 
 $('#traverse-city').on('click', function(){
-    $('#modal').show();
+    fireModal();
 });
 
 $('#charlevoix').on('click', function(){
-    $('#modal').show();
+    fireModal();
 });
 
 $('#mackinac-island').on('click', function(){
-    $('#modal').show();
+    fireModal();
 });
 
 $('#munising').on('click', function(){
-    $('#modal').show();
+    fireModal();
 });
 
 $('#exit').on('click', function(){
 	$('#modal').hide();
 });
+
+
+var pages = [
+    {
+        id: 'detroit',
+        path: 'cities/detroit.html'
+    },
+    {
+        id: 'grand_rapids',
+        path: 'cities/grand_rapids.html'
+    }
+];
+
+pages.forEach(function(item, index, array) {
+    console.log(item, index);
+    var div = "<div class='page' id='page-" + item.id + "'></div>";
+    $(".pages").append(div);
+    $("#page-" + item.id).load(item.path + ' .site');
+});
+
+function fireModal() {
+    modalContentsContainer.html(modalContents);
+    $("#modal").show();
+}
